@@ -46,7 +46,6 @@
     "tests-e2e": "grunt tests-server & grunt tests-e2e",
     "build": "grunt build",
     "mocha": "./node_modules/.bin/mocha",
-    "jshint": "./node_modules/.bin/jshint",
     "karma": "./node_modules/.bin/karma"
   },
   "engines": {

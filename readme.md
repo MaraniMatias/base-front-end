@@ -7,7 +7,16 @@ npm install -g grunt-cli bower jshnit docco
 # npm install -g grunt-cli bower jshnit docco mocha karma
 ```
 
+*Eliminar package.json y/o bower.json las dependencias que no usaras, antes de correr `npm install`*
+
 En la carpeta del proyecto correr `npm install` (en la terminal) para instalar dependencias y `npm start` para iniciar el monitor del proyecto, este corres tares, compila, tests, abre el navegador web, y si hay cambios en los archivos recarga la pagina.
+
+`npm start` == `grunt` (iniciar entorno de desarrollo)
+`npm run tests` == `grunt tests` (tests unitarios, navegador firefox y chrome)
+`npm run tests-e2e` == `grunt tests-server & grunt tests-e2e` (tests end-to-end, navegador chrome)
+`npm run build` == `grunt build` (crea el proyecto final y la documentación)
+`npm run mocha` == `mocha` (como si lo instalas global)
+`npm run karma` == `karma` (como si lo instala global)
 
 __todo:__
 
@@ -67,9 +76,21 @@ __Framework CSS__
 [semantic](http://semantic-ui.com/)
 [materialize](http://materializecss.com/)
 
------
+---
 Generador de un proyecto completo `npm install -g generator-fountain-webapp` , no lo uso porque hay cosas que no uso pero es bueno para saber que paquete usar
 
 Para los test con protractor correr una vez `webdriver-manager update`
+
+---
+**Notas**
+
+__Test__
 [jasmine](https://jasmine.github.io)
 [protractor](http://www.protractortest.org)
+
+__Framework CSS__
+[bulma](http://bulma.io/)
+[foundation](http://foundation.zurb.com/) [doc](http://foundation.zurb.com/sites/docs)
+[primercss](http://primercss.io/)
+[mui](https://www.muicss.com/)
+[uikit](https://getuikit.com/)
