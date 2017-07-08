@@ -13,7 +13,7 @@ __todo:__
 
 - __tareas con Grunt__
   - [x] PUG to HTML
-  - [x] compress -  indicar variables como angular,jquery y otras globales que no las modifique
+  - [x] uglify
   - [x] lnit - ES5 porque usamos angularjs v1
   - [x] less
   - [x] docco
@@ -29,7 +29,6 @@ __todo:__
   - [x] post install
   - [x] npm start
   - [x] npm test
-  - [ ] limpiar deps
 
 - __views__
   - [x] bootstrap angular
