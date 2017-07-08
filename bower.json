@@ -1,0 +1,30 @@
+{
+  "name": "proyecto-base-front-end",
+  "version": "0.0.1",
+  "description": "Tener instalado NodeJS, Base para royecto front end.",
+  "main": "",
+  "authors": [
+    "Marani Matias Ezequiel"
+  ],
+  "directory": "bower_components/",
+  "license": "MIT",
+  "homepage": "",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "dist",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.6.0",
+    "bootstrap": "~3.3.7",
+    "angular-material": "~1.1.4",
+    "semantic": "semantic-ui#~2.2.10",
+    "normalize-css": "^7.0.0",
+    "materialize": "^0.99.0",
+    "angular-ui-router": "^1.0.5"
+  }
+}

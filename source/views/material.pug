@@ -1,0 +1,76 @@
+extends ./layout.pug
+
+block append css
+  - if (settings.envflag !== "production")
+    link( href='../../bower_components/angular-material/angular-material.css' rel='stylesheet')
+
+block append js
+  - if (settings.envflag !== "production")
+    script(src='../../bower_components/angular-animate/angular-animate.js')
+    script(src='../../bower_components/angular-aria/angular-aria.js')
+    script(src='../../bower_components/angular-messages/angular-messages.js')
+    script(src='../../bower_components/angular-material/angular-material.js')
+block append scripts
+  script(src=paths+"/angular-material.js" type="text/javascript")
+  script(src=paths+"/angular.js" type="text/javascript")
+  script(src=paths+'/controllers/main.js')
+  script(src=paths+'/controllers/material-table.js')
+block content
+  .md-padding(layout-align="center center")
+    h1.md-display-3(href="/dist/html/")  Material
+    a(href="https://material.angularjs.org") material.angularjs.org
+    div(layout='row' layout-xs='column')
+      div(flex='100')
+        md-card(flex="100")
+          form(name="myForm")
+            md-card-title
+              md-card-title-text
+                span.md-headline Card headline
+                span.md-subhead Card subheader
+            md-card-content
+              div(layout='row' flex-xs)
+                md-input-container
+                  input(ng-pattern="pattern.alphaNumeric" name="name" ng-model="user.name" type='text' required placeholder='First Name')
+                md-input-container
+                  md-select(ng-model='user.gender' placeholder="Gender")
+                    md-option(ng-value='g' ng-repeat="g in gender") {{ g }}
+
+              div(layout='row' layout-xs="column")
+                md-input-container(flex-xs)
+                  input(name="email" ng-pattern="pattern.email" type='email' ng-model="user.email" placeholder='Email address')
+                md-input-container(flex-xs)
+                  input(name="password" type='password' ng-model="user.password" placeholder='Password')
+
+            md-card-actions(layout='row' layout-align='center center')
+              md-button.md-primary.md-raised(ng-disabled="!myForm.$valid" ng-click="addUser(user)") Sumit
+              a.md-button(href="/dist/html/") back
+
+      div(flex='100' ng-controller="table")
+        md-card
+          md-card-content
+            table.highlight.striped
+              thead
+                tr
+                  th.collapsing #
+                  th Name
+                  th Gender
+                  th Email
+                  th Password
+              tbody
+                tr(ng-click="show($index)" ng-repeat="user in db")
+                  td {{$index}}
+                  td {{user.name}}
+                  td {{user.gender}}
+                  td {{user.email}}
+                  td {{user.password}}
+        md-card
+          md-card-content
+            pre {{ userjson | json : 2 }}
+        //md-list
+          md-list-item.md-2-line(ng-repeat='user in db')
+            md-checkbox(ng-model='item.done')
+            .md-list-item-text
+              h3 {{user.name}}
+              h4 {{user.email}}
+              p {{user.gender}}
+              p {{user.password}}

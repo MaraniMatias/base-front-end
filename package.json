@@ -1,0 +1,67 @@
+{
+  "name": "proyecto-base-front-end",
+  "version": "0.0.1",
+  "description": "Tener instalado NodeJS, Base para royecto front end.",
+  "main": "",
+  "dependencies": {},
+  "devDependencies": {
+    "angular-mocks": "^1.6.5",
+    "browser-sync": "^2.18.12",
+    "chai": "^4.0.2",
+    "chai-as-promised": "^7.1.1",
+    "faker": "^4.1.0",
+    "glob": "^7.1.2",
+    "grunt": "^1.0.1",
+    "grunt-browser-sync": "^2.2.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-less": "^1.4.1",
+    "grunt-contrib-pug": "^1.0.0",
+    "grunt-contrib-uglify": "^3.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-csso": "^2.2.0",
+    "grunt-docco": "^0.5.0",
+    "grunt-karma": "^2.0.0",
+    "grunt-mocha-test": "^0.13.2",
+    "grunt-puglint": "^1.0.0",
+    "jshint": "^2.9.5",
+    "jshint-stylish": "^2.2.1",
+    "karma": "^1.7.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-expect": "^1.1.3",
+    "karma-faker": "^1.1.0",
+    "karma-firefox-launcher": "^1.0.1",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.3",
+    "load-grunt-tasks": "^3.5.2",
+    "mocha": "^3.4.2",
+    "nightmare": "^2.10.0",
+    "pug": "^2.0.0-rc.2",
+    "uglify": "^0.1.5"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+    "start": "grunt",
+    "tests": "grunt tests",
+    "tests-e2e": "grunt tests-server & grunt tests-e2e",
+    "build": "grunt build",
+    "mocha": "./node_modules/.bin/mocha",
+    "jshint": "./node_modules/.bin/jshint",
+    "karma": "./node_modules/.bin/karma"
+  },
+  "engines": {
+    "node": "~6.11.0",
+    "npm": "~5.0.4"
+  },
+  "private": true,
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/maranimatias/base-front-end.git"
+  },
+  "author": {
+    "name": "Marani Matias Ezequiel",
+    "email": "maranimatias@gmail.com"
+  },
+  "homepage": "https://bitbucket.org/maranimatias/base-front-end#readme"
+}

@@ -1,0 +1,64 @@
+extends ./layout.pug
+
+block append css
+  - if (settings.envflag !== "production")
+    link( href='../../bower_components/bootstrap/dist/css/bootstrap.css' rel='stylesheet')
+    //link( href='../../bower_components/bootstrap/dist/css/bootstrap-theme.css' rel='stylesheet')
+
+block append js
+  - if (settings.envflag !== "production")
+    script(src='../../bower_components/bootstrap/dist/js/bootstrap.js')
+
+block append scripts
+  script(src=paths+"/angular-bootstrap-semantic.js" type="text/javascript")
+  script(src=paths+"/angular.js" type="text/javascript")
+  script(src=paths+'/controllers/main.js')
+
+block content
+  .container-fluid
+    h1 Bootstrap
+      small
+        a(href="http://getbootstrap.com/") getbootstrap.com
+    .row
+      .col-xs-12.col-md-4
+        .panel.panel-default
+          .panel-body
+            form.ui.form(name="myForm")
+              .form-group(ng-class="[{ 'has-error' : !myForm.name.$valid }]")
+                label First Name
+                input.form-control(ng-model="user.name" ng-pattern="pattern.alphaNumeric" name="name" required type='text' placeholder='First Name')
+              .form-group(ng-class="[{ 'has-error' : !myForm.gender.$valid }]")
+                label Gender
+                .dropdown
+                  button.btn.btn-default.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true') {{ (user.gender || "Gender") }}
+                    span.caret
+                  ul.dropdown-menu(aria-labelledby='dropdownMenu1')
+                    li(ng-repeat="g in gender")
+                      a(ng-click='user.gender=g') {{g}}
+              .form-group(ng-class="[{ 'has-error' : !myForm.email.$valid }]")
+                label Email address
+                input.form-control(ng-model="user.email" name="email" ng-pattern="pattern.email" type='email' placeholder='First Name')
+              .form-group(ng-class="[{ 'has-error' : !myForm.password.$valid }]")
+                label Password
+                input.form-control(ng-model="user.password" name="password" type='password' placeholder='Password')
+              button.btn.btn-default.btn-primary(type='submit' ng-disabled="!myForm.$valid" ng-click="addUser(user)") Submit
+              a.btn.btn-link(href="/dist/html/") back
+      .col-xs-12.col-md-8
+        .panel.panel-default
+          .panel-body
+            table.table.table-striped.table-hover
+              thead
+                tr
+                  th.collapsing #
+                  th Name
+                  th Gender
+                  th Email
+                  th Password
+              tbody
+                tr(ng-click="show($index)" ng-repeat="user in db")
+                  td {{$index}}
+                  td {{user.name}}
+                  td {{user.gender}}
+                  td {{user.email}}
+                  td {{user.password}}
+        pre {{ userjson | json : 2 }}

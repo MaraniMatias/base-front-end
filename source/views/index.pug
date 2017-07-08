@@ -1,0 +1,20 @@
+extends ./layout.pug
+block append css
+  - if (settings.envflag !== "production")
+    link( href='../../bower_components/materialize/dist/css/materialize.css' rel='stylesheet')
+
+block append js
+  - if (settings.envflag !== "production")
+    script(src='../../bower_components/materialize/dist/js/materialize.js')
+
+block content
+  div.container
+    h1.center-align= title
+    div.card-panel
+      h4 Examples of framework css
+      p Here i use
+        a(href="http://materializecss.com") Materialize
+      div.collection
+        a.collection-item(href="./bootstrap.html") bootstrap
+        a.collection-item(href="./material.html") material
+        a.collection-item(href="./semantic.html") semantic

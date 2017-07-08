@@ -1,0 +1,58 @@
+extends ./layout.pug
+
+block append css
+  - if (settings.envflag !== "production")
+    link( href='../../bower_components/semantic/dist/semantic.css' rel='stylesheet')
+
+block append js
+  - if (settings.envflag !== "production")
+    script(src='../../bower_components/semantic/dist/semantic.js')
+
+block append scripts
+  script(src=paths+"/angular-bootstrap-semantic.js" type="text/javascript")
+  script(src=paths+"/angular.js" type="text/javascript")
+  script(src=paths+'/controllers/main.js')
+  script.
+    $('select.ui.dropdown').dropdown();
+
+block content
+  .ui.container
+    h1.ui.header Semantic
+      a.sub.header(href="http://semantic-ui.com/") semantic-ui.com
+    .ui.grid.two.column.stackable
+      .six.wide.column
+        .ui.stacked.segment
+          form.ui.form(name="myForm")
+            .field(ng-class="[{ error : !myForm.name.$valid }]")
+              label First Name
+              input(ng-model="user.name" ng-pattern="pattern.alphaNumeric" name="name" required type='text' placeholder='First Name')
+            .field(ng-class="[{ error : !myForm.gender.$valid }]")
+              label Gender
+              select.ui.dropdown(ng-model='user.gender' name="gender")
+                option(value='{{g}}' ng-repeat="g in gender") {{g}}
+            .field(ng-class="[{ error : !myForm.email.$valid }]")
+              label Email address
+              input.form-control(ng-model="user.email" name="email" ng-pattern="pattern.email" type='email' placeholder='First Name')
+            .field(ng-class="[{ error : !myForm.password.$valid }]")
+              label Password
+              input.form-control(ng-model="user.password" name="password" type='password' placeholder='Password')
+            button.ui.button.primary(ng-disabled="!myForm.$valid" ng-click="addUser(user)") Submit
+            a.ui.button(href="/dist/html/") back
+      .ten.wide.column
+        table.ui.teal.selectable.compact.table
+          thead
+            tr
+              th.collapsing #
+              th Name
+              th Gender
+              th Email
+              th Password
+          tbody
+            tr(ng-click="show($index)" ng-repeat="user in db")
+              td {{$index}}
+              td {{user.name}}
+              td {{user.gender}}
+              td {{user.email}}
+              td {{user.password}}
+        .ui.segment
+          pre {{ userjson | json : 2 }}
