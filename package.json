@@ -57,11 +57,11 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/maranimatias/base-front-end.git"
+    "url": "git+ssh://git@github.com:MaraniMatias/base-front-end.git"
   },
   "author": {
     "name": "Marani Matias Ezequiel",
     "email": "maranimatias@gmail.com"
   },
-  "homepage": "https://bitbucket.org/maranimatias/base-front-end#readme"
+  "homepage": "https://github.com/MaraniMatias/base-front-end"
 }
