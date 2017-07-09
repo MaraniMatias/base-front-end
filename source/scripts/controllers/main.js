@@ -3,7 +3,7 @@ angular.controller('main', ['$scope', 'gender', 'db', 'pattern', function($scope
   $scope.pattern = pattern;
   $scope.gender = gender;
   $scope.db = db;
-  $scope.user = {};
+  $scope.user = {data:'02-12-1989'};
   $scope.userjson = {};
 
   $scope.addUser = function(data) {

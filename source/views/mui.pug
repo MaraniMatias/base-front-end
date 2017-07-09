@@ -3,11 +3,13 @@ extends ./layout.pug
 block append css
   - if (settings.envflag !== "production")
     link( href='../../bower_components/mui/packages/npm/dist/css/mui.css' rel='stylesheet')
-
+  - else
+    link(href="http://cdn.muicss.com/mui-0.9.17/css/mui.min.css" rel="stylesheet" type="text/css")
 block append js
   - if (settings.envflag !== "production")
     script(src='../../bower_components/mui/packages/npm/dist/js/mui.js')
-
+  - else
+    script(src="http://cdn.muicss.com/mui-0.9.17/js/mui.min.js")
 block append scripts
   script(src=paths+"/angular-bootstrap-semantic.js" type="text/javascript")
   script(src=paths+"/angular.js" type="text/javascript")

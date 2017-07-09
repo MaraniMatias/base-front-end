@@ -26,6 +26,8 @@
     "normalize-css": "^7.0.0",
     "materialize": "^0.99.0",
     "angular-ui-router": "^1.0.5",
-    "mui": "^0.9.17"
+    "mui": "^0.9.17",
+    "foundation-sites": "^6.4.1",
+    "foundation-datepicker": "^1.5.6"
   }
 }

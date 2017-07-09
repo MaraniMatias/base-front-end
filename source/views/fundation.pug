@@ -1,0 +1,80 @@
+extends ./layout.pug
+
+block append css
+  - if (settings.envflag !== "production")
+    link( href='../../bower_components/foundation-sites/dist/css/foundation.css' rel='stylesheet')
+    link( href='../../bower_components/foundation-sites/dist/css/foundation-float.css' rel='stylesheet')
+    link( href='../../bower_components/foundation-datepicker/css/foundation-datepicker.css' rel='stylesheet')
+  - else
+    link( href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet")
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.1/css/foundation.min.css' integrity='sha256-itWEYdFWzZPBG78bJOOiQIn06QCgN/F0wMDcC4nOhxY=' crossorigin='anonymous')
+
+block append js
+  - if (settings.envflag !== "production")
+    script(src='../../bower_components/foundation-sites/dist/js/foundation.js')
+    script(src='../../bower_components/foundation-datepicker/js/foundation-datepicker.js')
+  - else
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.1/js/foundation.min.js' integrity='sha256-Nd2xznOkrE9HkrAMi4xWy/hXkQraXioBg9iYsBrcFrs=' crossorigin='anonymous')
+
+block append scripts
+  script(src=paths+"/angular-bootstrap-semantic.js" type="text/javascript")
+  script(src=paths+"/angular.js" type="text/javascript")
+  script(src=paths+'/controllers/main.js')
+
+block content
+  .grid-container
+    .row
+      h1 Fundation
+      span
+        a(href="http://foundation.zurb.com") foundation.zurb.com
+    .row
+      .columns.large-4
+        .card
+          .card-section
+            form(name="myForm")
+              .row
+                .medium-8.columns
+                  label(ng-class="[{ 'is-invalid-label' : !myForm.name.$valid }]") First Name
+                    input(ng-class="[{ 'is-invalid-input' : !myForm.name.$valid }]" ng-model="user.name" ng-pattern="pattern.alphaNumeric" name="name" required type='text' placeholder='First Name')
+                .medium-4.columns
+                  label Gender
+                  select(ng-model='user.gender' name="gender")
+                    option(value='{{g}}' ng-repeat="g in gender") {{g}}
+              .row
+                .columns
+                  label(ng-class="[{ 'is-invalid-label' : !myForm.email.$valid }] ") Email address
+                    input(ng-class="[{ 'is-invalid-input' : !myForm.email.$valid }] " ng-model="user.email" name="email" ng-pattern="pattern.email" type='email' placeholder='First Name')
+              .row
+                .columns
+                  label(ng-class="[{ 'is-invalid-label' : !myForm.password.$valid }]") Password
+                    input(ng-class="[{ 'is-invalid-imput' : !myForm.password.$valid }]" ng-model="user.password" name="password" type='password' placeholder='Password' aria-describedby="passwordHelpText")
+                  p#passwordHelpText.help-text No lo valido :D
+                .columns
+                  .input-group
+                    input.input-group-field(type="text" class="span2" id="dp1" ng-model="user.data")
+                    .input-group-button
+                      button.button(href="../../bower_components/foundation-datepicker/example.html") examples
+
+              button.button(ng-disabled="!myForm.$valid" ng-click="addUser(user)") Submit
+              a.clear.button.secondary(href="/dist/html/") back
+
+      .columns.large-8
+        .card
+          table.hover
+            thead
+              tr
+                th #
+                th Name
+                th Gender
+                th Email
+                th Password
+            tbody
+              tr(ng-click="show($index)" ng-repeat="user in db")
+                td {{$index}}
+                td {{user.name}}
+                td {{user.gender}}
+                td {{user.email}}
+                td {{user.password}}
+        .card
+          .card-section
+            pre {{ userjson | json : 2 }}

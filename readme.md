@@ -90,7 +90,7 @@ __Test__
 [protractor](http://www.protractortest.org)
 
 __Framework CSS__
-[foundation](http://foundation.zurb.com/) [doc](http://foundation.zurb.com/sites/docs)
+[foundation](http://foundation.zurb.com/) [doc](http://foundation.zurb.com/sites/docs) [angular-foundation-6](http://circlingthesun.github.io/angular-foundation-6/)
 [bulma](http://bulma.io/)
 [primercss](http://primercss.io/)
 [uikit](https://getuikit.com/)

@@ -7,3 +7,17 @@ var myname = "matias marani";
 //
 // **negrita**
 console.log("desde index.js " + myname);
+
+// **Usado en fundation datapiker**
+$(function() {
+  $('#dp1').fdatepicker({
+    //initialDate: '02-12-1989',
+    format: 'dd-mm-yyyy',
+    disableDblClickSelection: true,
+    leftArrow: '<<',
+    rightArrow: '>>',
+    closeIcon: ' X ',
+    closeButton: !true
+  });
+});
+
