@@ -25,6 +25,7 @@
     "semantic": "semantic-ui#~2.2.10",
     "normalize-css": "^7.0.0",
     "materialize": "^0.99.0",
-    "angular-ui-router": "^1.0.5"
+    "angular-ui-router": "^1.0.5",
+    "mui": "^0.9.17"
   }
 }

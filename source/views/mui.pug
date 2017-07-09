@@ -1,0 +1,63 @@
+extends ./layout.pug
+
+block append css
+  - if (settings.envflag !== "production")
+    link( href='../../bower_components/mui/packages/npm/dist/css/mui.css' rel='stylesheet')
+
+block append js
+  - if (settings.envflag !== "production")
+    script(src='../../bower_components/mui/packages/npm/dist/js/mui.js')
+
+block append scripts
+  script(src=paths+"/angular-bootstrap-semantic.js" type="text/javascript")
+  script(src=paths+"/angular.js" type="text/javascript")
+  script(src=paths+'/controllers/main.js')
+  script.
+
+block content
+  .mui-container-fluid
+    .mui-row
+      h1 Mui
+        a(href="http://www.muicss.com/") muicss.com
+    .mui-row
+      .mui-col-xs-12.mui-col-md-4
+        .mui-panel
+          form.mui-form(name="myForm")
+            legend Title
+            .mui-textfield.mui-textfield--float-label(ng-class="[{ mui--is-empty.mui--is-touched : !myForm.name.$valid }]")
+              input(ng-model="user.name" ng-pattern="pattern.alphaNumeric" name="name" required type='text')
+              label First Name
+            .mui-textfield.mui-textfield--float-label(ng-class="[{ error : !myForm.gender.$valid }]")
+              .mui-select
+                select(ng-model='user.gender' name="gender")
+                  option(value='{{g}}' ng-repeat="g in gender") {{g}}
+                label Gender
+            .mui-textfield.mui-textfield--float-label(ng-class="[{ error : !myForm.email.$valid }]")
+              input(ng-model="user.email" name="email" ng-pattern="pattern.email" type='email')
+              label Email address
+            .mui-textfield.mui-textfield--float-label(ng-class="[{ error : !myForm.password.$valid }]")
+              input(ng-model="user.password" name="password" type='password')
+              label Password
+            button.mui-btn.mui-btn--raised.mui-btn--primary(ng-disabled="!myForm.$valid" ng-click="addUser(user)") Submit
+            a.mui-btn.mui-btn--raised(href="/dist/html/") back
+      .mui-col-xs-12.mui-col-md-8
+        .mui-row
+          .mui-panel
+            table.mui-table.mui-table--bordered
+              thead
+                tr
+                  th #
+                  th Name
+                  th Gender
+                  th Email
+                  th Password
+              tbody
+                tr(ng-click="show($index)" ng-repeat="user in db")
+                  td {{$index}}
+                  td {{user.name}}
+                  td {{user.gender}}
+                  td {{user.email}}
+                  td {{user.password}}
+        .mui-row
+          .mui-panel
+            pre {{ userjson | json : 2 }}
