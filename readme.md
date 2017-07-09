@@ -76,6 +76,7 @@ __Framework CSS__
 [semantic](http://semantic-ui.com/)
 [materialize](http://materializecss.com/)
 [mui](https://www.muicss.com/)
+[foundation](http://foundation.zurb.com/) [doc](http://foundation.zurb.com/sites/docs) [angular-foundation-6](http://circlingthesun.github.io/angular-foundation-6/)
 
 ---
 Generador de un proyecto completo `npm install -g generator-fountain-webapp` , no lo uso porque hay cosas que no uso pero es bueno para saber que paquete usar
@@ -90,7 +91,8 @@ __Test__
 [protractor](http://www.protractortest.org)
 
 __Framework CSS__
-[foundation](http://foundation.zurb.com/) [doc](http://foundation.zurb.com/sites/docs) [angular-foundation-6](http://circlingthesun.github.io/angular-foundation-6/)
 [bulma](http://bulma.io/)
 [primercss](http://primercss.io/)
 [uikit](https://getuikit.com/)
+[Select2](https://select2.github.io/)
+[jQuery Date and Time picker](http://xdsoft.net/jqplugins/datetimepicker/)
