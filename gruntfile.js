@@ -92,20 +92,21 @@ module.exports = (grunt) => {
       },
     },
 
-    //pug_beautify: {
-    //  all: {
-    //    expand: true,
-    //    cwd: './source',
-    //    src: 'views/**/*.pug',
-    //    dest: './dist',
-    //    options: {
-    //      omit_empty_lines: false,
-    //      fill_tab: !true,
-    //      omit_div: false,
-    //      tab_size: 2
-    //    }
-    //  }
-    //},
+    pug_beautify: {
+      all: {
+        expand: true,
+        cwd: './source',
+        src: 'views/**/*.pug',
+        dest: './dist/views/beautify',
+        options: {
+          fill_tab: false,
+          omit_div: true,
+          tab_size: 2,
+          separator_space: true,
+          omit_empty_lines: true
+        }
+      }
+    },
 
     pug: {
       compile: {
@@ -226,7 +227,7 @@ module.exports = (grunt) => {
 
   grunt.loadNpmTasks('grunt-puglint'); // https://github.com/gruntjs/grunt-contrib-pug/
   grunt.loadNpmTasks('grunt-contrib-pug'); // https://github.com/gruntjs/grunt-contrib-pug
-  //grunt.loadNpmTasks('grunt-pug-beautify'); // https://github.com/pierrecholhot/grunt-pug-beautify
+  grunt.loadNpmTasks('grunt-pug-format'); // https://github.com/MaraniMatias/grunt-pug-format
   grunt.loadNpmTasks('grunt-contrib-jshint'); // https://github.com/gruntjs/grunt-contrib-jshint
   grunt.loadNpmTasks('grunt-contrib-less'); // https://github.com/gruntjs/grunt-contrib-less
   grunt.loadNpmTasks('grunt-csso'); // https://github.com/t32k/grunt-csso
@@ -240,6 +241,6 @@ module.exports = (grunt) => {
   grunt.registerTask('tests', ['jshint', 'puglint', 'pug', 'less', 'karma']);
   grunt.registerTask('tests-server', ['browserSync:tests']);
   grunt.registerTask('tests-e2e', ['jshint', 'puglint', 'pug', 'less', 'mochaTest']);
-  grunt.registerTask('build', ['jshint', 'uglify','puglint', 'pug', 'less', 'csso', 'docco']);
+  grunt.registerTask('build', ['jshint', 'uglify', 'puglint', 'pug', 'less', 'csso', 'docco']);
 };
 
