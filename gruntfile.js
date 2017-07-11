@@ -96,8 +96,8 @@ module.exports = (grunt) => {
       all: {
         expand: true,
         cwd: './source',
-        src: 'views/**/*.pug',
-        dest: './dist/views/beautify',
+        src: './**/*.pug',
+        dest: './source',
         options: {
           fill_tab: false,
           omit_div: true,
@@ -135,7 +135,7 @@ module.exports = (grunt) => {
     mochaTest: {
       e2e: {
         options: {
-          timeout: '10000',
+          timeout: '11000',
           slow: '7000',
           reporter: 'spec' // spec progress
         },
