@@ -1,4 +1,4 @@
-angular.component('people', {
+myApp.component('people', {
   bindings: {
     people: '<'
   },

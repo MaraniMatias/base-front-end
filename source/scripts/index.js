@@ -16,7 +16,7 @@ $(function() {
     disableDblClickSelection: true,
     leftArrow: '<<',
     rightArrow: '>>',
-    closeIcon: ' X ',
+    closeIcon: ' ✗ ', // ✖
     closeButton: !true
   });
 });

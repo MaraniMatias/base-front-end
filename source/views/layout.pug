@@ -9,25 +9,25 @@ html(lang='es')
     link(rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png')
     link(rel='icon' type='image/png' sizes='96x96' href='/favicon-96x96.png')
     link(rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png')
-    block meta
-      // for Google
-      meta(name='description' content='')
-      meta(name='keywords' content='')
-      meta(name='author' content='')
-      meta(name='copyright' content='')
-      meta(name='application-name' content='')
-      // for Facebook
-      meta(property='og:title' content='')
-      meta(property='og:type' content='article')
-      meta(property='og:image' content='')
-      meta(property='og:url' content='')
-      meta(property='og:description' content='')
-      // for Twitter
-      meta(name='twitter:card' content='summary')
-      meta(name='twitter:title' content='')
-      meta(name='twitter:description' content='')
-      meta(name='twitter:image' content='')
-      link(href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet")
+    // for Google
+    meta(name='description' content='')
+    meta(name='keywords' content='')
+    meta(name='author' content='')
+    meta(name='copyright' content='')
+    meta(name='application-name' content='')
+    // for Facebook
+    meta(property='og:title' content='')
+    meta(property='og:type' content='article')
+    meta(property='og:image' content='')
+    meta(property='og:url' content='')
+    meta(property='og:description' content='')
+    // for Twitter
+    meta(name='twitter:card' content='summary')
+    meta(name='twitter:title' content='')
+    meta(name='twitter:description' content='')
+    meta(name='twitter:image' content='')
+    // Styles : START
+    link(href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet")
 
     - if (settings.envflag !== "production")
       // corrige los diferentes css de los navegadores, capas es util
@@ -37,14 +37,17 @@ html(lang='es')
     block css
     - if (settings.envflag !== "production")
       link( href='../css/styles.css' rel='stylesheet')
+    // Styles : END
+
+    // JavaScript : START
     - if (settings.envflag !== "production")
       script(src='../../bower_components/jquery/dist/jquery.js')
       script(src='../../bower_components/angular/angular.js')
-      script(src='../../bower_components/angular-ui-router/release/angular-ui-router.js')
     - else
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
       script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js')
     block js
+    // JavaScript : END
 
   body(ng-app='angularApp')
     div(ng-controller="main")

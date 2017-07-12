@@ -70,7 +70,7 @@ __Test__
 __Framework CSS__
 [angular](http://www.angularjs.org)
 [angular-ui-router](https://ui-router.github.io/ng1/) [odc](https://ui-router.github.io/ng1/docs/0.4.2/#/api) [wiki](https://github.com/angular-ui/ui-router/wiki)
-[angular-material](http://www.material.angularjs.org)
+[angular-material](http://www.material.angularjs.org) [test](https://github.com/angular/bower-material#unit-testing-with-angular-material)
 [normalize-css](http://necolas.github.io/normalize.css/)
 [bootstrap](http://www.getbootstrap.com)
 [semantic](http://semantic-ui.com/)

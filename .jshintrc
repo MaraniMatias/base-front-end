@@ -91,6 +91,7 @@
     "inject": true,
     "ipc": true,
     "$": true,
+    "myApp": true,
     "angular": true
   } // additional predefined global variables
 }

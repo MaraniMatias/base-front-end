@@ -1,6 +1,6 @@
 // # Angular App
 // Definiendo
-angular.value("pattern", {
+myApp.value("pattern", {
     alphaNumeric: /^(\w|\s)*$/,
     // generic password: upper-case, lower-case, number/special character, and min 8 characters
     password: /^((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!&?¡¿!]).{8,})$/,

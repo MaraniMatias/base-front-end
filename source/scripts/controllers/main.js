@@ -1,5 +1,5 @@
 // # Angular Controller
-angular.controller('main', ['$scope', 'gender', 'db', 'pattern', function($scope, gender, db, pattern) {
+myApp.controller('main', ['$scope', 'gender', 'db', 'pattern', function($scope, gender, db, pattern) {
   $scope.pattern = pattern;
   $scope.gender = gender;
   $scope.db = db;

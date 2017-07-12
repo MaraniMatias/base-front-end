@@ -1,4 +1,4 @@
-angular.service('PeopleService', function($http) {
+myApp.service('PeopleService', function($http) {
   var service = {
     getAllPeople: function() {
       return $http.get('../../source/scripts/people.json', {

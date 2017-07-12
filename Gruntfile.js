@@ -23,14 +23,15 @@ const paths = {
   styles: ['./source/styles/**/*.less']
 };
 
-
 module.exports = (grunt) => {
   require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
 
     jshint: {
-      all: ['gruntfile.js', paths.tests[0]].concat(paths.scripts),
+      all: {
+        src: ['Gruntfile.js', paths.tests[0]].concat(paths.scripts)
+      },
       options: {
         reporter: require('jshint-stylish')
       }
@@ -77,7 +78,7 @@ module.exports = (grunt) => {
     },
 
     puglint: {
-      check: {
+      all: {
         src: paths.viwes
       },
       options: {
@@ -109,7 +110,7 @@ module.exports = (grunt) => {
     },
 
     pug: {
-      compile: {
+      all: {
         options: {
           data: settings.pug
         },
@@ -127,7 +128,7 @@ module.exports = (grunt) => {
       unit: {
         configFile: './tests/config/karma-unit.conf.js',
         options: {
-          //files: ['./tests/unit/**/*.js'] // le este primero antes que los de configuración
+          //files: ['./tests/unit/**/*.js'] // Este primero antes que los de configuración
         }
       }
     },
@@ -149,7 +150,7 @@ module.exports = (grunt) => {
           src: [
             './dist/css/**/*.css',
             './dist/html/**/*.html',
-            './source/scripts/**/*.js',
+            //'./source/scripts/**/*.js',
             './dist/js/**/*.js'
           ]
         },
@@ -192,37 +193,39 @@ module.exports = (grunt) => {
     watch: {
       views: {
         files: './source/views/**/*.pug',
-        tasks: ['puglint', 'pug'],
+        tasks: ['puglint'], //'pug'],
         options: {
           interrupt: true,
-          livereload: true
-        },
+          //nospawn: true
+          //spawn: false,
+        }
       },
       styles: {
         files: './source/styles/**/*.less',
         tasks: ['less'],
         options: {
-          interrupt: true
-        },
+          interrupt: true,
+          //spawn: false
+        }
       },
       scripts: {
-        files: paths.tests[0].concat(paths.scripts),
-        // files: ['./source/scripts/**/*.js', './tests/**/*.js'],
+        //files: paths.tests[0].concat(paths.scripts),
+        files: '<%= jshint.all.src %>',
         tasks: ['jshint'],
-        spawn: !false,
         options: {
-          interrupt: true
-        },
+          //spawn: false,
+          interrupt: true,
+          //nospawn: true
+        }
       },
       configFiles: {
-        files: ['gruntfile.js', './tests/config/*.js'],
+        files: ['Gruntfile.js', './tests/config/*.js'],
         tasks: ['jshint'],
         options: {
           reload: true
         }
       }
     }
-
   });
 
   grunt.loadNpmTasks('grunt-puglint'); // https://github.com/gruntjs/grunt-contrib-pug/
@@ -235,6 +238,7 @@ module.exports = (grunt) => {
   grunt.loadNpmTasks('grunt-karma'); // https://github.com/karma-runner/grunt-karma
   grunt.loadNpmTasks('grunt-mocha-test'); // https://github.com/pghalliday/grunt-mocha-test
   grunt.loadNpmTasks('grunt-browser-sync'); // https://www.browsersync.io/docs
+  // https://github.com/gruntjs/grunt-contrib-watch/blob/master/docs/watch-examples.md
   grunt.loadNpmTasks('grunt-contrib-watch'); // https://github.com/gruntjs/grunt-contrib-watch
 
   grunt.registerTask('default', ['jshint', 'puglint', 'pug', 'less', 'browserSync:dev', 'watch']);
@@ -242,5 +246,14 @@ module.exports = (grunt) => {
   grunt.registerTask('tests-server', ['browserSync:tests']);
   grunt.registerTask('tests-e2e', ['jshint', 'puglint', 'pug', 'less', 'mochaTest']);
   grunt.registerTask('build', ['jshint', 'uglify', 'puglint', 'pug', 'less', 'csso', 'docco']);
+
+  grunt.event.on('watch', function(action, filepath, target) {
+    // views : source/views/index.pug has changed
+    grunt.log.writeln('=> ' + target + ': ' + filepath + ' has ' + action);
+    if (target === "scripts") {
+      grunt.config(['jshint.all.src'], [filepath]);
+    }
+  });
+
 };
 

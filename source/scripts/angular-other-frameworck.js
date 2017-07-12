@@ -1,3 +1,4 @@
 // # Angular App
 // Definiendo
-var angular = angular.module('angularApp', []);
+var myApp = angular.module('angularApp', []);
+

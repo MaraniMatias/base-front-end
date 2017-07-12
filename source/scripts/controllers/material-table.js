@@ -1,4 +1,4 @@
-angular.controller('table', ['$scope', '$mdDialog', 'db', function($scope, $mdDialog, db) {
+myApp.controller('table', ['$scope', '$mdDialog', 'db', function($scope, $mdDialog, db) {
   $scope.db = db;
   $scope.show = function(index) {
     var user = db[index];
