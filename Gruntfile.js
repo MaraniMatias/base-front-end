@@ -110,10 +110,11 @@ module.exports = (grunt) => {
     },
 
     pug: {
+      options: {
+        data: settings.pug,
+        client: true
+      },
       all: {
-        options: {
-          data: settings.pug
-        },
         files: [{
           expand: true,
           cwd: './source/views',
@@ -121,6 +122,12 @@ module.exports = (grunt) => {
           dest: './dist/html',
           ext: '.html'
         }]
+      },
+      one: {
+        files: {
+          src: '',
+          dest: paths.dist
+        }
       }
     },
 
@@ -193,7 +200,7 @@ module.exports = (grunt) => {
     watch: {
       views: {
         files: './source/views/**/*.pug',
-        tasks: ['puglint'], //'pug'],
+        tasks: ['pug.one'], //['puglint','pug'],
         options: {
           interrupt: true,
           //nospawn: true
@@ -252,6 +259,9 @@ module.exports = (grunt) => {
     grunt.log.writeln('=> ' + target + ': ' + filepath + ' has ' + action);
     if (target === "scripts") {
       grunt.config(['jshint.all.src'], [filepath]);
+    }
+    if (target === "views") {
+      grunt.config(['pug.one.file'],{ dist:paths.dest,src: filepath});
     }
   });
 
