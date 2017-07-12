@@ -9,7 +9,7 @@ const settings = {
   }
 };
 const paths = {
-  dist: './dist',
+  dest: './dist',
   source: './source',
   documentation: './document',
   browserSync: {
@@ -30,7 +30,10 @@ module.exports = (grunt) => {
 
     jshint: {
       all: {
-        src: ['Gruntfile.js', paths.tests[0]].concat(paths.scripts)
+        src: [paths.tests[0]].concat(paths.scripts)
+      },
+      config: {
+        src: ['Gruntfile.js', './tests/config/*.js']
       },
       options: {
         reporter: require('jshint-stylish')
@@ -43,11 +46,12 @@ module.exports = (grunt) => {
           expand: true,
           cwd: paths.source + '/scripts',
           src: ['**/*.js'],
-          dest: paths.dist + '/js',
+          dest: paths.dest + '/js',
           ext: '.js'
         }]
       }
     },
+    // concat
 
     less: {
       development: {
@@ -55,7 +59,7 @@ module.exports = (grunt) => {
           expand: true,
           cwd: paths.source + '/styles',
           src: ['**/*.less'],
-          dest: paths.dist + '/css',
+          dest: paths.dest + '/css',
           ext: '.css'
         }]
       }
@@ -69,9 +73,9 @@ module.exports = (grunt) => {
         },
         files: [{
           expand: true,
-          cwd: paths.dist + '/css',
+          cwd: paths.dest + '/css',
           src: ['**/*.css', '!*.min.css'],
-          dest: paths.dist + '/css',
+          dest: paths.dest + '/css',
           ext: '.min.css'
         }]
       }
@@ -111,23 +115,17 @@ module.exports = (grunt) => {
 
     pug: {
       options: {
-        data: settings.pug,
-        client: true
+        pretty:false , // Output indented HTML.
+        data: settings.pug
       },
       all: {
         files: [{
           expand: true,
           cwd: './source/views',
           src: ['**/*.pug', '!layout.pug'],
-          dest: './dist/html',
+          dest: paths.dest + '/html',
           ext: '.html'
         }]
-      },
-      one: {
-        files: {
-          src: '',
-          dest: paths.dist
-        }
       }
     },
 
@@ -155,10 +153,10 @@ module.exports = (grunt) => {
       dev: {
         bsFiles: {
           src: [
-            './dist/css/**/*.css',
-            './dist/html/**/*.html',
-            //'./source/scripts/**/*.js',
-            './dist/js/**/*.js'
+            paths.dest+'./css/**/*.css',
+            paths.dest+'./html/**/*.html',
+            './source/scripts/**/*.js',
+            paths.dest+'./js/**/*.js'
           ]
         },
         options: {
@@ -171,12 +169,6 @@ module.exports = (grunt) => {
         }
       },
       tests: {
-        //bsFiles: {
-        //  src: [
-        //    './dist/**/*.*',
-        //    './source/scripts/**/*.js'
-        //  ]
-        //},
         options: {
           ui: false,
           open: false,
@@ -199,35 +191,30 @@ module.exports = (grunt) => {
 
     watch: {
       views: {
-        files: './source/views/**/*.pug',
-        tasks: ['pug.one'], //['puglint','pug'],
+        files: paths.viwes,
+        tasks: ['puglint', 'pug'],
         options: {
-          interrupt: true,
-          //nospawn: true
-          //spawn: false,
+          interrupt: true
         }
       },
       styles: {
-        files: './source/styles/**/*.less',
+        files: paths.styles ,
         tasks: ['less'],
         options: {
-          interrupt: true,
-          //spawn: false
+          interrupt: true
         }
       },
       scripts: {
-        //files: paths.tests[0].concat(paths.scripts),
         files: '<%= jshint.all.src %>',
-        tasks: ['jshint'],
+        tasks: ['jshint:all'],
         options: {
-          //spawn: false,
+          spawn: false,
           interrupt: true,
-          //nospawn: true
         }
       },
       configFiles: {
-        files: ['Gruntfile.js', './tests/config/*.js'],
-        tasks: ['jshint'],
+        files: '<%= jshint.config.src %>',
+        tasks: ['jshint:config'],
         options: {
           reload: true
         }
@@ -248,20 +235,17 @@ module.exports = (grunt) => {
   // https://github.com/gruntjs/grunt-contrib-watch/blob/master/docs/watch-examples.md
   grunt.loadNpmTasks('grunt-contrib-watch'); // https://github.com/gruntjs/grunt-contrib-watch
 
-  grunt.registerTask('default', ['jshint', 'puglint', 'pug', 'less', 'browserSync:dev', 'watch']);
-  grunt.registerTask('tests', ['jshint', 'puglint', 'pug', 'less', 'karma']);
+  grunt.registerTask('default', 'Start', ['jshint', 'puglint', 'pug:all', 'less', 'browserSync:dev', 'watch']);
+  grunt.registerTask('tests', ['jshint', 'puglint', 'pug:all', 'less', 'karma']);
   grunt.registerTask('tests-server', ['browserSync:tests']);
-  grunt.registerTask('tests-e2e', ['jshint', 'puglint', 'pug', 'less', 'mochaTest']);
-  grunt.registerTask('build', ['jshint', 'uglify', 'puglint', 'pug', 'less', 'csso', 'docco']);
+  grunt.registerTask('tests-e2e', ['jshint', 'puglint', 'pug:all', 'less', 'mochaTest']);
+  grunt.registerTask('build', ['jshint', 'uglify', 'puglint', 'pug:all', 'less', 'csso', 'docco']);
 
   grunt.event.on('watch', function(action, filepath, target) {
     // views : source/views/index.pug has changed
-    grunt.log.writeln('=> ' + target + ': ' + filepath + ' has ' + action);
+    //grunt.log.writeln('=> ' + target + ': ' + filepath + ' has ' + action);
     if (target === "scripts") {
       grunt.config(['jshint.all.src'], [filepath]);
-    }
-    if (target === "views") {
-      grunt.config(['pug.one.file'],{ dist:paths.dest,src: filepath});
     }
   });
 
