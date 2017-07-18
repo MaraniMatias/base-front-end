@@ -11,12 +11,12 @@ npm install -g grunt-cli bower jshnit docco
 
 En la carpeta del proyecto correr `npm install` (en la terminal) para instalar dependencias y `npm start` para iniciar el monitor del proyecto, este corres tares, compila, tests, abre el navegador web, y si hay cambios en los archivos recarga la pagina.
 
-`npm start` == `grunt` (iniciar entorno de desarrollo)
-`npm run tests` == `grunt tests` (tests unitarios, navegador firefox y chrome)
-`npm run tests-e2e` == `grunt tests-server & grunt tests-e2e` (tests end-to-end, navegador chrome)
-`npm run build` == `grunt build` (crea el proyecto final y la documentación)
-`npm run mocha` == `mocha` (como si lo instalas global)
-`npm run karma` == `karma` (como si lo instala global)
+* `npm start` o `grunt` (iniciar entorno de desarrollo)
+* `npm run tests` o `grunt tests` (tests unitarios, navegador firefox y chrome)
+* `npm run tests-e2e` o `grunt tests-server & grunt tests-e2e` (tests end-to-end, navegador chrome)
+* `npm run build` o `grunt build` (crea el proyecto final y la documentación)
+* `npm run mocha` o `mocha` (como si lo instalas global)
+* `npm run karma` o `karma` (como si lo instala global)
 
 __todo:__
 
@@ -69,14 +69,14 @@ __Test__
 
 __Framework CSS__
 [angular](http://www.angularjs.org)
-[angular-ui-router](https://ui-router.github.io/ng1/) [odc](https://ui-router.github.io/ng1/docs/0.4.2/#/api) [wiki](https://github.com/angular-ui/ui-router/wiki)
-[angular-material](http://www.material.angularjs.org) [test](https://github.com/angular/bower-material#unit-testing-with-angular-material)
+( [angular-ui-router](https://ui-router.github.io/ng1/) [odc](https://ui-router.github.io/ng1/docs/0.4.2/#/api) [wiki](https://github.com/angular-ui/ui-router/wiki) )
+( [angular-material](http://www.material.angularjs.org) [test](https://github.com/angular/bower-material#unit-testing-with-angular-material) )
 [normalize-css](http://necolas.github.io/normalize.css/)
 [bootstrap](http://www.getbootstrap.com)
 [semantic](http://semantic-ui.com/)
 [materialize](http://materializecss.com/)
 [mui](https://www.muicss.com/)
-[foundation](http://foundation.zurb.com/) [doc](http://foundation.zurb.com/sites/docs) [angular-foundation-6](http://circlingthesun.github.io/angular-foundation-6/)
+( [foundation](http://foundation.zurb.com/) [doc](http://foundation.zurb.com/sites/docs) ) [angular-foundation-6](http://circlingthesun.github.io/angular-foundation-6/)
 
 ---
 Generador de un proyecto completo `npm install -g generator-fountain-webapp` , no lo uso porque hay cosas que no uso pero es bueno para saber que paquete usar
@@ -96,3 +96,6 @@ __Framework CSS__
 [uikit](https://getuikit.com/)
 [Select2](https://select2.github.io/)
 [jQuery Date and Time picker](http://xdsoft.net/jqplugins/datetimepicker/)
+[useiconic](useiconic.com)
+[ionicons](http://ionicons.com/)
+[Material Design Lite](https://getmdl.io/index.html)

@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "Tener instalado NodeJS, Base para royecto front end.",
   "main": "",
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.15.3"
+  },
   "devDependencies": {
     "angular-mocks": "^1.6.5",
     "browser-sync": "^2.18.12",

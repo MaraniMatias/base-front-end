@@ -1,6 +1,6 @@
 // # Angular App
 // Definiendo
-myApp.value("pattern", {
+myApp.constant("pattern", {
     alphaNumeric: /^(\w|\s)*$/,
     // generic password: upper-case, lower-case, number/special character, and min 8 characters
     password: /^((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!&?¡¿!]).{8,})$/,
@@ -8,7 +8,7 @@ myApp.value("pattern", {
     email: /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/
 
   })
-  .value("gender", [
+  .constant("gender", [
     'Male',
     'Female'
   ])

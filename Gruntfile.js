@@ -41,6 +41,9 @@ module.exports = (grunt) => {
     },
 
     uglify: {
+      options: {
+        report: 'gzip',
+      },
       minify: {
         files: [{
           expand: true,
@@ -115,7 +118,7 @@ module.exports = (grunt) => {
 
     pug: {
       options: {
-        pretty:false , // Output indented HTML.
+        pretty: false, // Output indented HTML.
         data: settings.pug
       },
       all: {
@@ -153,10 +156,10 @@ module.exports = (grunt) => {
       dev: {
         bsFiles: {
           src: [
-            paths.dest+'./css/**/*.css',
-            paths.dest+'./html/**/*.html',
+            paths.dest + './css/**/*.css',
+            paths.dest + './html/**/*.html',
             './source/scripts/**/*.js',
-            paths.dest+'./js/**/*.js'
+            paths.dest + './js/**/*.js'
           ]
         },
         options: {
@@ -198,7 +201,7 @@ module.exports = (grunt) => {
         }
       },
       styles: {
-        files: paths.styles ,
+        files: paths.styles,
         tasks: ['less'],
         options: {
           interrupt: true

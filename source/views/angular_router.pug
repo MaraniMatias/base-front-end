@@ -27,6 +27,11 @@ block content
       a(ui-sref='about' ui-sref-active='active') About
     li
       a(ui-sref='people' ui-sref-active='active') People
+    li
+      a(ui-sref='home' ui-sref-active='active') Home
 
   ui-view
+
+  ui-view(name="main")
+  ui-view(name="data")
 
